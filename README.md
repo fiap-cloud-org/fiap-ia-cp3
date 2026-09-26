@@ -10,7 +10,7 @@
 </h1>
 
 <p align="center">
-  <img src="docs/demo.webp" alt="Site do Sakura Sushi com o chatbot respondendo pedido, preço, prazo de entrega, reclamação e despedida, mostrando a intenção detectada e a confiança" />
+  <img src="docs/demo.webp" alt="Site do Sakura Sushi: o chat abre pela bola, recebe duas perguntas e responde mostrando a intenção detectada e a confiança" />
 </p>
 
 <p align="center">
