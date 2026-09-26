@@ -3,324 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sakura Sushi - Tradição e Excelência na Arte Culinária Japonesa desde 1985">
-    <meta name="keywords" content="restaurante japonês, sushi, temaki, comida japonesa, São Paulo">
-    <title>Sakura Sushi - Tradição e Excelência desde 1985</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Sakura Sushi · Culinária japonesa desde 1985</title>
+    <meta name="description" content="Sakura Sushi: sushis, temakis e pratos quentes preparados à mão desde 1985, com atendimento por chatbot.">
+    <link rel="icon" href="{{ url_for('static', filename='img/selo.svg') }}" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Sakura Sushi - Home">Sakura</a>
-            <ul class="nav-links" role="menubar">
-                <li role="none"><a href="#home" role="menuitem">Início</a></li>
-                <li role="none"><a href="#about" role="menuitem">Nossa História</a></li>
-                <li role="none"><a href="#menu" role="menuitem">Cardápio</a></li>
-                <li role="none"><a href="#contact" role="menuitem">Contato</a></li>
-            </ul>
+    <header class="site-header" id="topo">
+        <div class="container header-inner">
+            <a href="#topo" class="brand" aria-label="Sakura Sushi, início">
+                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Sakura Sushi" height="44">
+            </a>
+            <nav class="nav" aria-label="Navegação principal">
+                <a href="#historia">Nossa história</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <button class="btn btn-primary btn-sm" type="button" data-open-chat>Fazer pedido</button>
         </div>
-    </nav>
+    </header>
 
-    <section id="home" class="hero" aria-label="Hero section">
-        <div class="hero-content">
-            <h1>Sakura Sushi</h1>
-            <p class="subtitle">Tradição e Excelência na Arte Culinária Japonesa desde 1985</p>
-            <a href="#menu" class="cta-button" aria-label="Explorar cardápio">Explore Nosso Cardápio</a>
-        </div>
-    </section>
-
-    <section id="about" class="section" aria-labelledby="about-title">
-        <div class="container">
-            <div class="section-header">
-                <h2 id="about-title" class="section-title">Nossa História</h2>
-                <p class="section-subtitle">Uma jornada de quatro décadas dedicada à perfeição culinária japonesa</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-content">
-                    <h3>Tradição Familiar</h3>
-                    <p>Em 1985, o Chef Hiroshi chegou ao Brasil com um sonho: compartilhar a autêntica culinária japonesa com o povo brasileiro. Formado na prestigiosa escola culinária de Tóquio, trouxe consigo técnicas milenares e receitas guardadas há gerações.</p>
-                    <p>Hoje, continuamos este legado, combinando a tradição familiar com inovações contemporâneas, mantendo sempre o compromisso com ingredientes frescos e técnicas apuradas.</p>
-                    <p>Nosso restaurante tornou-se referência em culinária japonesa, reconhecido pela crítica gastronômica e amado pelos nossos clientes que buscam uma experiência autêntica e memorável.</p>
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <p class="eyebrow">Desde 1985 · Liberdade, São Paulo</p>
+                    <h1>A arte do sushi, feita à mão todos os dias.</h1>
+                    <p class="lead">Peixes frescos, arroz temperado na hora e receitas de três gerações de sushimans. Peça pelo nosso atendimento virtual em poucos segundos.</p>
+                    <div class="hero-actions">
+                        <a href="#cardapio" class="btn btn-primary">Ver cardápio</a>
+                        <button class="btn btn-ghost" type="button" data-open-chat>Falar com o atendimento</button>
+                    </div>
+                    <dl class="hero-facts">
+                        <div><dt>40</dt><dd>anos de tradição</dd></div>
+                        <div><dt>12</dt><dd>pratos da casa</dd></div>
+                        <div><dt>45 min</dt><dd>entrega média</dd></div>
+                    </dl>
                 </div>
-                <div class="about-image">
-                    <img 
-                        src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=800&q=80" 
-                        alt="Chef preparando sushi tradicional japonês no Sakura Sushi"
-                        loading="lazy"
-                        onerror="this.src='https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?auto=format&fit=crop&w=800&q=80'"
-                    >
-                </div>
+                <figure class="hero-photo">
+                    <img src="{{ url_for('static', filename='img/hero.jpg') }}" alt="Nigiris de salmão, atum e peixe branco numa travessa escura" width="1100" height="1300">
+                </figure>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="menu" class="section section-alt" aria-labelledby="menu-title">
-        <div class="container">
-            <div class="section-header">
-                <h2 id="menu-title" class="section-title">Nosso Cardápio</h2>
-                <p class="section-subtitle">Criações artesanais preparadas com ingredientes premium selecionados</p>
-            </div>
-            <div class="menu-categories">
-                <article class="menu-category">
-                    <h3 class="category-title">Sushi Premium</h3>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Salmão Premium</h4>
-                            <p>Salmão fresco do Chile, arroz sushi temperado</p>
-                        </div>
-                        <span class="item-price">R$ 25,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Atum Especial</h4>
-                            <p>Atum vermelho importado, corte tradicional</p>
-                        </div>
-                        <span class="item-price">R$ 28,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Robalo Nikkei</h4>
-                            <p>Robalo fresco com toque de limão siciliano</p>
-                        </div>
-                        <span class="item-price">R$ 22,00</span>
-                    </div>
-                </article>
-
-                <article class="menu-category">
-                    <h3 class="category-title">Temaki Artesanal</h3>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Hot Roll Signature</h4>
-                            <p>Salmão, cream cheese, empanado especial</p>
-                        </div>
-                        <span class="item-price">R$ 32,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Temaki Califórnia</h4>
-                            <p>Kani, abacate, pepino, molho especial</p>
-                        </div>
-                        <span class="item-price">R$ 28,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Spicy Tuna</h4>
-                            <p>Atum temperado, cebolinha, molho spicy</p>
-                        </div>
-                        <span class="item-price">R$ 30,00</span>
-                    </div>
-                </article>
-
-                <article class="menu-category">
-                    <h3 class="category-title">Pratos Quentes</h3>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Yakissoba Sakura</h4>
-                            <p>Macarrão no wok, legumes frescos, molho especial</p>
-                        </div>
-                        <span class="item-price">R$ 48,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Salmão Teriyaki</h4>
-                            <p>Salmão grelhado, molho teriyaki caseiro, arroz</p>
-                        </div>
-                        <span class="item-price">R$ 55,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Udon Premium</h4>
-                            <p>Massa artesanal, caldo dashi, tempurá de camarão</p>
-                        </div>
-                        <span class="item-price">R$ 42,00</span>
-                    </div>
-                </article>
-
-                <article class="menu-category">
-                    <h3 class="category-title">Combinados Especiais</h3>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Combo Executivo</h4>
-                            <p>10 sushis variados, 5 sashimis, temaki</p>
-                        </div>
-                        <span class="item-price">R$ 75,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Combo Família</h4>
-                            <p>Seleção premium para 4 pessoas</p>
-                        </div>
-                        <span class="item-price">R$ 180,00</span>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h4>Omakase Experience</h4>
-                            <p>Degustação guiada pelo chef (8 pratos)</p>
-                        </div>
-                        <span class="item-price">R$ 120,00</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" aria-labelledby="features-title">
-        <div class="container">
-            <div class="section-header">
-                <h2 id="features-title" class="section-title">Por que nos escolher</h2>
-                <p class="section-subtitle">Excelência em cada detalhe, do preparo ao atendimento</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon" aria-hidden="true">
-                        <i class="fas fa-fish"></i>
-                    </div>
-                    <h3>Ingredientes Premium</h3>
-                    <p>Peixes frescos importados diariamente, arroz especial japonês e ingredientes selecionados pelos nossos chefs.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon" aria-hidden="true">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Tradição Autêntica</h3>
-                    <p>Técnicas milenares japonesas preservadas e transmitidas através de gerações de mestres sushimans.</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon" aria-hidden="true">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Atendimento Ágil</h3>
-                    <p>Entrega rápida e eficiente, com nosso sistema de chatbot inteligente para facilitar seus pedidos.</p>
+        <section class="section" id="historia">
+            <div class="container split">
+                <figure class="split-photo">
+                    <img src="{{ url_for('static', filename='img/historia.jpg') }}" alt="Uramakis de salmão com gergelim sobre tábua de madeira" loading="lazy" width="1000" height="800">
+                </figure>
+                <div>
+                    <p class="eyebrow">Nossa história</p>
+                    <h2>Uma tradição de família, servida com cuidado.</h2>
+                    <p>Em 1985, o chef Hiroshi chegou ao Brasil com um sonho: compartilhar a culinária japonesa autêntica com o público brasileiro. Formado em Tóquio, trouxe técnicas milenares e receitas guardadas há gerações.</p>
+                    <p>Hoje seguimos esse legado, unindo a tradição a ingredientes frescos e técnicas contemporâneas. Cada peça é montada na hora, do jeito que o chef ensinou.</p>
+                    <ul class="values">
+                        <li><strong>Ingredientes frescos</strong><span>Peixes selecionados diariamente e arroz japonês de grão curto.</span></li>
+                        <li><strong>Técnica tradicional</strong><span>Cortes e preparos transmitidos por três gerações de sushimans.</span></li>
+                        <li><strong>Atendimento ágil</strong><span>Chatbot que entende o seu pedido, preços e prazo de entrega.</span></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="section contact" aria-labelledby="contact-title">
-        <div class="container">
-            <div class="section-header">
-                <h2 id="contact-title" class="section-title">Fale Conosco</h2>
-                <p class="section-subtitle">Estamos aqui para proporcionar a melhor experiência gastronômica</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon" aria-hidden="true">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Localização</h4>
-                            <p>Rua dos Samurais, 123<br>Bairro Liberdade - São Paulo/SP<br>CEP: 01503-020</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon" aria-hidden="true">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Telefone & WhatsApp</h4>
-                            <p>(11) 3208-4567<br>(11) 99999-9999</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon" aria-hidden="true">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>E-mail</h4>
-                            <p>contato@sakurasushi.com.br<br>reservas@sakurasushi.com.br</p>
-                        </div>
-                    </div>
+        <section class="section section-alt" id="cardapio">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">Cardápio</p>
+                    <h2>Criações da casa</h2>
                 </div>
-                <div class="contact-schedule">
-                    <h3 style="color: var(--color-secondary); margin-bottom: var(--spacing-lg); font-family: var(--font-display);">Horário de Funcionamento</h3>
-                    <div class="hours-grid">
-                        <div class="hour-item">
-                            <span>Segunda a Quinta</span>
-                            <span>18h00 - 23h30</span>
+                <div class="menu-grid">
+                    <article class="menu-card">
+                        <img src="{{ url_for('static', filename='img/sushi.jpg') }}" alt="Nigiris de salmão" loading="lazy" width="800" height="600">
+                        <div class="menu-body">
+                            <h3>Sushi Premium</h3>
+                            <ul class="menu-list">
+                                <li><div><h4>Salmão Premium</h4><p>Salmão fresco do Chile, arroz sushi temperado</p></div><span>R$ 25</span></li>
+                                <li><div><h4>Atum Especial</h4><p>Atum vermelho importado, corte tradicional</p></div><span>R$ 28</span></li>
+                                <li><div><h4>Robalo Nikkei</h4><p>Robalo fresco com toque de limão siciliano</p></div><span>R$ 22</span></li>
+                            </ul>
                         </div>
-                        <div class="hour-item">
-                            <span>Sexta e Sábado</span>
-                            <span>18h00 - 00h30</span>
+                    </article>
+                    <article class="menu-card">
+                        <img src="{{ url_for('static', filename='img/temaki.jpg') }}" alt="Uramakis com ovas de salmão" loading="lazy" width="800" height="600">
+                        <div class="menu-body">
+                            <h3>Temakis e rolls</h3>
+                            <ul class="menu-list">
+                                <li><div><h4>Hot Roll Signature</h4><p>Salmão, cream cheese e empanado especial</p></div><span>R$ 32</span></li>
+                                <li><div><h4>Temaki Califórnia</h4><p>Kani, abacate, pepino e molho especial</p></div><span>R$ 28</span></li>
+                                <li><div><h4>Spicy Tuna</h4><p>Atum temperado, cebolinha e molho spicy</p></div><span>R$ 30</span></li>
+                            </ul>
                         </div>
-                        <div class="hour-item">
-                            <span>Domingo</span>
-                            <span>18h00 - 22h30</span>
+                    </article>
+                    <article class="menu-card">
+                        <img src="{{ url_for('static', filename='img/quentes.jpg') }}" alt="Lámen com camarão e ovo" loading="lazy" width="800" height="600">
+                        <div class="menu-body">
+                            <h3>Pratos quentes</h3>
+                            <ul class="menu-list">
+                                <li><div><h4>Yakissoba Sakura</h4><p>Macarrão no wok, legumes frescos e molho da casa</p></div><span>R$ 48</span></li>
+                                <li><div><h4>Salmão Teriyaki</h4><p>Salmão grelhado, teriyaki caseiro e arroz</p></div><span>R$ 55</span></li>
+                                <li><div><h4>Udon Premium</h4><p>Massa artesanal, caldo dashi e tempurá de camarão</p></div><span>R$ 42</span></li>
+                            </ul>
                         </div>
-                        <div class="hour-item">
-                            <span>Feriados</span>
-                            <span>Consulte</span>
+                    </article>
+                    <article class="menu-card">
+                        <img src="{{ url_for('static', filename='img/combinados.jpg') }}" alt="Barca de sushis variados" loading="lazy" width="800" height="600">
+                        <div class="menu-body">
+                            <h3>Combinados</h3>
+                            <ul class="menu-list">
+                                <li><div><h4>Combo Executivo</h4><p>10 sushis variados, 5 sashimis e temaki</p></div><span>R$ 75</span></li>
+                                <li><div><h4>Omakase</h4><p>Degustação guiada pelo chef, 8 etapas</p></div><span>R$ 120</span></li>
+                                <li><div><h4>Combo Família</h4><p>Seleção da casa para 4 pessoas</p></div><span>R$ 180</span></li>
+                            </ul>
                         </div>
-                    </div>
-                    <div style="margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: rgba(212, 165, 116, 0.1); border-radius: var(--radius-md); border-left: 4px solid var(--color-secondary);">
-                        <h4 style="color: var(--color-secondary); margin-bottom: var(--spacing-sm);">Reservas</h4>
-                        <p style="opacity: 0.9; margin: 0;">Recomendamos reservas para grupos acima de 6 pessoas. Entre em contato conosco!</p>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="social-links">
-                <a href="#" class="social-link" aria-label="Instagram" title="Siga-nos no Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Facebook" title="Curta nossa página no Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="WhatsApp" title="Fale conosco no WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="TripAdvisor" title="Veja nossas avaliações no TripAdvisor">
-                    <i class="fab fa-tripadvisor"></i>
-                </a>
+        <section class="section" id="contato">
+            <div class="container contact">
+                <div>
+                    <p class="eyebrow">Contato</p>
+                    <h2>Venha nos visitar ou peça em casa.</h2>
+                    <ul class="contact-list">
+                        <li><span>Endereço</span>Rua das Cerejeiras, 123 · Liberdade, São Paulo/SP</li>
+                        <li><span>Telefone</span>(11) 3000-0000</li>
+                        <li><span>E-mail</span>contato@sakura.exemplo</li>
+                    </ul>
+                    <button class="btn btn-primary" type="button" data-open-chat>Pedir pelo chat</button>
+                </div>
+                <div class="hours">
+                    <h3>Horário de funcionamento</h3>
+                    <dl>
+                        <div><dt>Segunda a quinta</dt><dd>18h – 23h30</dd></div>
+                        <div><dt>Sexta e sábado</dt><dd>18h – 0h30</dd></div>
+                        <div><dt>Domingo</dt><dd>18h – 22h30</dd></div>
+                    </dl>
+                    <p class="note">Para grupos acima de 6 pessoas, recomendamos reserva.</p>
+                </div>
             </div>
-            <p>&copy; 2025 Sakura Sushi. Todos os direitos reservados.</p>
-            <p style="opacity: 0.7; font-size: var(--font-size-sm); margin-top: var(--spacing-sm);">CNPJ: 12.345.678/0001-90 | Licença ANVISA: 123456789</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <img src="{{ url_for('static', filename='img/logo-clara.svg') }}" alt="Sakura Sushi" height="40">
+            <p>Projeto acadêmico (FIAP) · restaurante e dados de contato fictícios.</p>
         </div>
     </footer>
 
-    <div class="chatbot-widget" role="complementary" aria-label="Chatbot de atendimento">
-        <button 
-            class="chatbot-toggle" 
-            id="chatbotToggle" 
-            aria-label="Abrir chatbot de atendimento"
-            aria-expanded="false"
-            aria-controls="chatbotContainer"
-        >
-            <i class="fas fa-comments" aria-hidden="true"></i>
-        </button>
-        <div class="chatbot-container" id="chatbotContainer" role="dialog" aria-label="Chat de atendimento">
-            <div class="chatbot-header">
-                <i class="fas fa-robot" aria-hidden="true"></i>
-                Atendimento Virtual Sakura
-            </div>
-            <div class="chatbot-messages" id="cbMessages" role="log" aria-live="polite" aria-atomic="false">
-                <div class="chatbot-message bot">
-                    <div class="chatbot-message-content">
-                        Konnichiwa! Bem-vindo ao Sakura Sushi.<br><br>
-                        Sou seu assistente virtual e estou aqui para ajudá-lo com informações sobre nosso cardápio, preços, horários e pedidos.<br><br>
-                        Como posso ajudá-lo hoje?
-                    </div>
+    <div class="chat" id="chatbotWidget">
+        <div class="chat-panel" id="chatbotContainer" role="dialog" aria-label="Atendimento virtual" aria-hidden="true">
+            <header class="chat-header">
+                <img src="{{ url_for('static', filename='img/selo.svg') }}" alt="" width="36" height="36">
+                <div>
+                    <strong>Atendimento Sakura</strong>
+                    <span><i class="status-dot"></i>Online agora</span>
                 </div>
-            </div>
-            <div class="chatbot-input">
-                <input 
-                    type="text" 
-                    id="cbInput" 
-                    placeholder="Digite sua mensagem..."
-                    aria-label="Campo de mensagem do chatbot"
-                    autocomplete="off"
-                >
-                <button id="cbSend" aria-label="Enviar mensagem">
-                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                <button class="chat-close" type="button" id="chatbotClose" aria-label="Fechar atendimento">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </button>
+            </header>
+            <div class="chat-messages" id="cbMessages" role="log" aria-live="polite">
+                <div class="msg bot"><div class="bubble">Konnichiwa! Sou o atendimento virtual do Sakura Sushi. Posso ajudar com cardápio, preços, prazo de entrega e pedidos.</div></div>
             </div>
+            <div class="chat-suggestions" id="cbSuggestions">
+                <button type="button">Qual o preço do temaki?</button>
+                <button type="button">Qual o tempo de entrega?</button>
+                <button type="button">Quero pedir um hot roll</button>
+                <button type="button">Quais são os ingredientes?</button>
+            </div>
+            <form class="chat-form" id="cbForm" autocomplete="off">
+                <input type="text" id="cbInput" placeholder="Escreva sua mensagem" aria-label="Mensagem">
+                <button type="submit" id="cbSend" aria-label="Enviar">
+                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form>
         </div>
+        <button class="chat-toggle" type="button" id="chatbotToggle" aria-controls="chatbotContainer" aria-expanded="false" aria-label="Abrir atendimento">
+            <svg class="icon-chat" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
