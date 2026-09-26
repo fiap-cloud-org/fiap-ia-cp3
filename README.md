@@ -1,151 +1,144 @@
-# Teste do Chatbot Sakura Sushi
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-clara.svg" />
+    <img src="docs/logo.svg" alt="Sakura Sushi" width="230" />
+  </picture>
+</p>
 
-## Frases para testar múltiplas intenções:
+<h1 align="center">
+  CP3 - Chatbot de atendimento com NLP e Gemini
+</h1>
 
-1. **Teste básico:**
-   - "Olá, quero pedir sushi de salmão"
-   - "Oi, quanto custa o temaki?"
+<p align="center">
+  <img src="docs/demo.webp" alt="Site do Sakura Sushi com o chatbot respondendo pedido, preço, prazo de entrega, reclamação e despedida, mostrando a intenção detectada e a confiança" />
+</p>
 
-2. **Múltiplas frases:**
-   - "Olá! Quero fazer um pedido. Gostaria de saber o preço do combo família."
-   - "Boa noite, quero sushi de atum e também gostaria de saber o tempo de entrega."
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=python,flask,html,css,js" alt="Stacks" />
+  </a>
+</p>
 
-3. **Frases complexas:**
-   - "Oi, preciso fazer um pedido urgente, quero combo salmão, quanto custa e em quanto tempo chega?"
-   - "Bom dia! Quero ver o cardápio, principalmente os preços dos temakis, e também saber sobre tempo de entrega."
+## Qual a finalidade do projeto?
 
-4. **Teste de reconhecimento de pratos:**
-   - "Quero hot roll"
-   - "Preciso de yakissoba"
-   - "Gostaria de philadelphia"
-   - "Vou querer califórnia"
+Checkpoint 3 da disciplina de **Inteligência Artificial** (FIAP, 2º semestre de 2025). O projeto é o site do restaurante fictício **Sakura Sushi** com um **chatbot de atendimento** que entende o que o cliente escreve e responde de acordo com a **intenção** da mensagem: pedido, preço, prazo de entrega, reclamação, horário, formas de pagamento e outras.
 
-5. **Teste de reclamações:**
-   - "Meu pedido chegou frio"
-   - "O sushi veio mal feito"
-   - "Demorou muito para entregar"
+O reconhecimento é feito com **processamento de linguagem natural** em Python (NLTK): a mensagem é quebrada em frases, cada frase é tokenizada e limpa, e o bot compara as palavras com os exemplos de cada intenção. Uma mesma mensagem pode ter **várias intenções**, e o chat mostra qual foi detectada e com que confiança.
 
-6. **Teste de agradecimentos:**
-   - "Muito obrigado"
-   - "Valeu pela ajuda"
-   - "Arigato!"
+No Checkpoint 3 foi adicionada a intenção **ingredientes**: o cliente escolhe um ou mais pratos de uma lista e o bot busca a **receita e os ingredientes na API do Google Gemini**.
 
-7. **Teste de despedidas:**
-   - "Tchau"
-   - "Até logo"
-   - "Sayonara"
+## Arquitetura
 
-## Intenções implementadas (9 intenções):
+<p align="center">
+  <img src="docs/arch.gif" alt="Arquitetura: navegador, app Flask com o chatbot NLTK e as intenções em JSON, e a API do Gemini" />
+</p>
 
-✅ **cumprimento** - 15+ frases, 4+ respostas
-✅ **compra** - 15+ frases, 4+ respostas  
-✅ **itens_disponiveis** - 15+ frases, 4+ respostas
-✅ **precos** - 15+ frases, 4+ respostas
-✅ **tempo_entrega** - 15+ frases, 4+ respostas
-✅ **agradecimento** - 15+ frases, 4+ respostas
-✅ **reclamacao** - 15+ frases, 4+ respostas
-✅ **despedida** - 15+ frases, 4+ respostas
-✅ **ingredientes** - 50+ frases, integração com Gemini AI
+## O que foi construído
 
-## Funcionalidades implementadas:
+### Intenções
 
-✅ **Processamento de múltiplas frases** em uma única requisição
-✅ **Exibição de resposta, intenção detectada e probabilidade**
-✅ **Frontend web para interação**
-✅ **Mais de 15 frases por intenção**
-✅ **4+ respostas por intenção**
-✅ **8 intenções obrigatórias do Checkpoint 2**
-✅ **Intenção "ingredientes" com integração Gemini AI**
-✅ **Seleção múltipla de pratos**
-✅ **Busca de receitas e ingredientes via API Gemini**
+| Grupo | Intenções |
+|---|---|
+| Atendimento | `cumprimento`, `agradecimento`, `despedida`, `reclamacao` |
+| Pedido | `compra`, `itens_disponiveis`, `precos`, `tempo_entrega`, `forma_pagamento` |
+| Restaurante | `localizacao`, `horario_funcionamento`, `promocoes_ofertas`, `eventos_grupos` |
+| Cardápio | `ingredientes_qualidade`, `informacoes_nutricionais`, `curiosidades_cultura` |
+| Checkpoint 3 | `ingredientes`: seleção de pratos e consulta ao Gemini |
 
-## Configuração da API Gemini:
+São **17 intenções**, com mais de **2.300 frases de exemplo** e **115 respostas** em `intents.json`.
 
-Para usar a funcionalidade de ingredientes, você precisa de uma API key do Google Gemini:
+### Funcionalidades
 
-1. **Obter API Key:**
-   - Acesse: https://makersuite.google.com/app/apikey
-   - Crie uma conta Google (se necessário)
-   - Gere uma nova API key
+| Funcionalidade | Como funciona |
+|---|---|
+| Várias frases por mensagem | Cada frase é analisada separadamente e as respostas são combinadas |
+| Intenção e confiança | O chat mostra a intenção detectada e a probabilidade de cada resposta |
+| Reconhecimento de pratos | Identifica o prato citado (hot roll, temaki, yakissoba…) e personaliza a resposta |
+| Receita via Gemini | Na intenção `ingredientes`, o cliente escolhe pratos e o bot consulta o Gemini |
+| Site do restaurante | Página com história, cardápio com fotos e contato, e o chat como widget flutuante |
+| Chat leve | Abre com animação simples, mostra "digitando…" enquanto espera e traz atalhos de perguntas |
 
-2. **Configurar API Key:**
-   - **Opção 1 (Recomendado):** Configure como variável de ambiente:
-     ```bash
-     export GEMINI_API_KEY="sua-api-key-aqui"
-     ```
-   - **Opção 2:** Envie a API key diretamente na requisição (não recomendado para produção)
+### Rotas
 
-## Como testar:
+| Rota | O que faz |
+|---|---|
+| `GET /` | Site do Sakura Sushi com o widget do chat |
+| `POST /chat` | Recebe `{ "message": "..." }` e devolve resposta, intenção e confiança |
+| `GET /intents` | Lista as intenções carregadas |
 
-1. **Instalar dependências:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Tecnologias utilizadas
 
-2. **Executar o servidor:**
-   ```bash
-   python app.py
-   ```
+- **Python + Flask:** API do chatbot e páginas do site;
+- **NLTK:** tokenização e *stopwords* em português;
+- **Google Gemini API:** receitas e ingredientes (opcional);
+- **HTML, CSS e JavaScript:** site responsivo e widget de chat, sem bibliotecas no front;
+- **Cormorant Garamond e Manrope:** tipografia do site (Google Fonts);
+- **Jupyter Notebook:** enunciado e exploração do Checkpoint 3.
 
-3. **Acessar a interface:**
-   - Abra o navegador: `http://localhost:5000`
+## Estrutura do repositório
 
-4. **Testar funcionalidade de ingredientes:**
-   - Digite: "Quais são os ingredientes do lasanha?"
-   - Ou: "Quero saber a receita do temaki"
-   - O bot mostrará uma lista de pratos disponíveis
-   - Selecione o número do prato (ex: "1" ou "1,3,5" para múltiplos)
-   - O bot consultará a API Gemini e retornará a receita completa
-
-5. **Testar outras intenções:**
-   - Use as frases de teste acima
-   - Observe as informações de intenção e probabilidade
-   - Teste frases com múltiplas intenções
-
-## Exemplos de uso da API:
-
-### Teste via cURL (sem interface web):
-
-```bash
-# 1. Detectar intenção de ingredientes
-curl -X POST http://localhost:5000/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "quais são os ingredientes"}'
-
-# 2. Selecionar prato (resposta do passo 1 mostrará lista)
-curl -X POST http://localhost:5000/chat \
-  -H "Content-Type: application/json" \
-  -d '{
-    "message": "1",
-    "selecao_prato": "1",
-    "api_key": "sua-gemini-api-key"
-  }'
+```text
+fiap-ia-cp3/
+├── app.py               # Flask: site, /chat e /intents
+├── chatbot.py           # NLP: pré-processamento, similaridade e Gemini
+├── intents.json         # Intenções, frases de exemplo e respostas
+├── templates/
+│   ├── home.html        # Site do Sakura Sushi com o widget
+│   └── index.html       # Versão só com o chat
+├── static/
+│   ├── css/style.css    # Estilos do site e do chat
+│   ├── js/script.js     # Chat: envio, "digitando…" e intenções
+│   └── img/             # Logo, selo e fotos do cardápio
+├── checkpoint6.ipynb    # Enunciado do checkpoint
+├── docs/                # Demo e diagrama
+└── requirements.txt
 ```
 
-## Pratos disponíveis para consulta:
+## Fluxo de funcionamento
 
-1. lasanha
-2. feijoada
-3. moqueca
-4. spaghetti alla carbonara
-5. yakissoba
-6. sushi de salmão
-7. temaki
-8. ramen
-9. hot roll
-10. combo família
-11. sushi de atum
-12. sashimi
-13. udon
-14. teriyaki
-15. philadelphia roll
-16. califórnia roll
-17. gyoza
-18. tempura
+1. O cliente escreve no chat e o front envia `POST /chat`.
+2. O `chatbot.py` separa a mensagem em frases, tokeniza e remove *stopwords*.
+3. Cada frase é comparada com as frases de exemplo de cada intenção, com um *fallback* por palavras-chave.
+4. O bot escolhe uma resposta da intenção mais provável e, se reconhecer um prato, personaliza o texto.
+5. Na intenção `ingredientes`, ele devolve a lista de pratos; com a escolha do cliente, consulta o Gemini e responde com a receita.
 
-## Notas importantes:
+## Como rodar
 
-- ⚠️ **Nunca compartilhe sua API key** publicamente
-- 🔒 Use variáveis de ambiente para armazenar a chave
-- 📝 A API Gemini tem limites de uso (consulte a documentação)
-- 🌐 Requer conexão com internet para funcionar
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+export GEMINI_API_KEY="sua-chave"   # opcional, só para a intenção ingredientes
+python app.py                       # http://localhost:5000
+```
+
+A chave do Gemini é gerada em [Google AI Studio](https://aistudio.google.com/app/apikey). Não coloque a chave no código: use a variável de ambiente.
+
+## Como validar a entrega
+
+Frases para testar no chat:
+
+| Frase | Intenções detectadas |
+|---|---|
+| "Oi! Quanto custa o temaki e qual o tempo de entrega?" | `cumprimento`, `compra` (temaki), `tempo_entrega` |
+| "Quero pedir um hot roll" | `compra`, com o prato reconhecido |
+| "O pedido chegou frio" | `reclamacao` |
+| "Onde fica o restaurante?" | `localizacao` |
+| "Quais as formas de pagamento?" | `forma_pagamento` |
+| "Quais são os ingredientes?" | `ingredientes`, com a lista de pratos |
+| "Muito obrigado, tchau!" | `despedida` |
+
+Pontos principais de validação:
+
+- cada resposta mostra a intenção e a confiança;
+- mensagens com mais de uma frase recebem uma resposta para cada frase;
+- com a `GEMINI_API_KEY` definida, escolher um prato devolve a receita.
+
+## Créditos
+
+Fotos dos pratos: [Unsplash](https://unsplash.com) (licença Unsplash). O restaurante e os dados de contato são fictícios.
+
+---
+
+## Autor
+
+**William Alves Coelho** · RM 556336 · [@willtechdev](https://github.com/willtechdev)
