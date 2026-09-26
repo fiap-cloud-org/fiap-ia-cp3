@@ -45,4 +45,5 @@ def get_intents():
     return jsonify(chatbot.intents)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Debug só quando pedido (FLASK_DEBUG=1): o console de debug do Werkzeug executa código
+    app.run(debug=os.getenv('FLASK_DEBUG') == '1', host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
